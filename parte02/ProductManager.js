@@ -8,6 +8,7 @@ class Plataforma {
     async producto() {
         try {
             const systemData = {
+                id: this.products.length + 1,
                 cpu: os.cpus()[0].model, 
                 plataforma: os.platform(),
                 arquitectura: os.arch()
@@ -37,6 +38,14 @@ class Plataforma {
             console.error('Error al leer el archivo JSON:', error);
             this.products = [];
         }
+    }
+
+    getProducts() {
+        return this.products;
+    }
+
+    getProductById(id) {
+        return this.products.find(p => p.id === id);
     }
 }
 
